@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Route } from 'react-router-dom';
 
 const Public = ({ children }) => (
-  <div className="public bg-primary">{children}</div>
+  <div className="public bg-light">{children}</div>
 );
 
 const PublicRoute = ({ component: Component, ...rest }) => {
