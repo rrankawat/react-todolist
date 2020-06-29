@@ -4,13 +4,18 @@ import AddTodo from './AddTodo';
 import FilterTodos from './FilterTodos';
 import { Spinner } from 'reactstrap';
 
+import AuthContext from '../../context/auth/authContext';
 import TodoContext from '../../context/todo/todoContext';
 
 const Todos = () => {
   const todoContext = useContext(TodoContext);
   const { todos, getTodos, filtered } = todoContext;
 
+  const authContext = useContext(AuthContext);
+  const { loadUser } = authContext;
+
   useEffect(() => {
+    loadUser();
     getTodos();
     // eslint-disable-next-line
   }, []);
@@ -19,7 +24,7 @@ const Todos = () => {
     <Fragment>
       <AddTodo />
 
-      <div className="card mt-3">
+      <div className="card my-3">
         <div className="card-body">
           <h3>
             Todos <span className="text-primary">List</span>

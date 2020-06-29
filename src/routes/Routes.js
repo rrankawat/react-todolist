@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,14 +18,9 @@ import { Spinner } from 'reactstrap';
 
 const Routes = () => {
   const authContext = useContext(AuthContext);
-  const { isAuthenticated, loadUser } = authContext;
+  const { isAuthenticated } = authContext;
 
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    loadUser();
-    // eslint-disable-next-line
-  }, []);
 
   setTimeout(() => {
     setLoading(false);
