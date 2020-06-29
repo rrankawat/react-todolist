@@ -4,7 +4,7 @@ import Alert from '../components/layout/Alert';
 
 const Public = ({ children }) => (
   <div className="public bg-light">
-    <div className="d-flex flex-column w-25">
+    <div className="auth">
       <Alert />
       {children}
     </div>

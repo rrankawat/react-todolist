@@ -5,6 +5,14 @@
   align-items: center;
 }
 
+.auth {
+  display: flex;
+  flex-direction: column;
+  width: 22rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 .home-spinner {
   display: flex;
   justify-content: center;

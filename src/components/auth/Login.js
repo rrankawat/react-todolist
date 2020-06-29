@@ -71,7 +71,7 @@ const Login = () => {
 
   return (
     <Fragment>
-      <h1 className="text-primary text-center">Login</h1>
+      <h1 className="text-primary text-center">TodoList</h1>
 
       <form className="mt-4" onSubmit={onSubmit}>
         <div className="form-group">
@@ -105,6 +105,7 @@ const Login = () => {
             type="submit"
             className="btn btn-primary btn-block"
             placeholder="Password"
+            value="Login"
           />
         </div>
         {/* <div className="form-group">

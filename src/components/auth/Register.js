@@ -91,7 +91,7 @@ const Register = () => {
 
   return (
     <Fragment>
-      <h1 className="text-primary text-center">Register</h1>
+      <h1 className="text-primary text-center">TodoList</h1>
 
       <form className="mt-4" onSubmit={onSubmit}>
         <div className="form-group">
@@ -151,6 +151,7 @@ const Register = () => {
             type="submit"
             className="btn btn-primary btn-block"
             placeholder="Password"
+            value="Register"
           />
         </div>
         <div className="form-group">
