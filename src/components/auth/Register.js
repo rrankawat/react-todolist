@@ -1,7 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
+import AuthContext from '../../context/auth/authContext';
+import AlertContext from '../../context/alert/alertContext';
+
 const Register = () => {
+  const authContext = useContext(AuthContext);
+  const { register, error, clearErrors } = authContext;
+
+  const alertContext = useContext(AlertContext);
+  const { setAlert } = alertContext;
+
+  useEffect(() => {
+    if (error) {
+      setAlert(error, 'danger');
+    }
+    clearErrors();
+    // eslint-disable-next-line
+  }, [error]);
+
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -68,12 +85,12 @@ const Register = () => {
     setUser({ ...user, errors });
 
     if (Object.keys(errors).length === 0) {
-      console.log('success');
+      register({ name, email, password });
     }
   };
 
   return (
-    <div className="d-flex flex-column w-25">
+    <Fragment>
       <h1 className="text-primary text-center">Register</h1>
 
       <form className="mt-4" onSubmit={onSubmit}>
@@ -140,7 +157,7 @@ const Register = () => {
           Already a user ? click here to <Link to="/login">Login</Link>
         </div>
       </form>
-    </div>
+    </Fragment>
   );
 };
 

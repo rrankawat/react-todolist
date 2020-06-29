@@ -1,12 +1,27 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext, useEffect, Fragment } from 'react';
+// import { Link } from 'react-router-dom';
+
+import AuthContext from '../../context/auth/authContext';
+import AlertContext from '../../context/alert/alertContext';
 
 const Login = () => {
+  const authContext = useContext(AuthContext);
+  const { login, error, clearErrors } = authContext;
+
+  const alertContext = useContext(AlertContext);
+  const { setAlert } = alertContext;
+
+  useEffect(() => {
+    if (error) {
+      setAlert(error, 'danger');
+    }
+    clearErrors();
+    // eslint-disable-next-line
+  }, [error]);
+
   const [user, setUser] = useState({
-    name: '',
     email: '',
     password: '',
-    confirmPass: '',
     errors: {},
   });
 
@@ -23,6 +38,7 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+
     let errors = user.errors;
 
     // Email
@@ -48,12 +64,13 @@ const Login = () => {
     setUser({ ...user, errors });
 
     if (Object.keys(errors).length === 0) {
-      console.log('success');
+      setAlert('Please wait...', 'warning');
+      login({ email, password });
     }
   };
 
   return (
-    <div className="d-flex flex-column w-25">
+    <Fragment>
       <h1 className="text-primary text-center">Login</h1>
 
       <form className="mt-4" onSubmit={onSubmit}>
@@ -90,11 +107,11 @@ const Login = () => {
             placeholder="Password"
           />
         </div>
-        <div className="form-group">
+        {/* <div className="form-group">
           Not a user ? click here to <Link to="/register">Register</Link>
-        </div>
+        </div> */}
       </form>
-    </div>
+    </Fragment>
   );
 };
 
