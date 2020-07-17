@@ -26,7 +26,7 @@ const TodoItem = ({ todo: { _id, title, completed } }) => {
 
     setTimeout(() => {
       setLoading(false);
-    }, 1200);
+    }, 2000);
   };
 
   return (

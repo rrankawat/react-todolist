@@ -4,18 +4,13 @@ import AddTodo from './AddTodo';
 import FilterTodos from './FilterTodos';
 import { Spinner } from 'reactstrap';
 
-import AuthContext from '../../context/auth/authContext';
 import TodoContext from '../../context/todo/todoContext';
 
 const Todos = () => {
   const todoContext = useContext(TodoContext);
   const { todos, getTodos, filtered } = todoContext;
 
-  const authContext = useContext(AuthContext);
-  const { loadUser } = authContext;
-
   useEffect(() => {
-    loadUser();
     getTodos();
     // eslint-disable-next-line
   }, []);

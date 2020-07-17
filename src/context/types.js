@@ -1,5 +1,5 @@
 // Common
-export const API_URL = 'https://rrankawat-todolist-api.herokuapp.com';
+export const API_URL = 'https://rrankawat-todolist.herokuapp.com';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 // Auth
